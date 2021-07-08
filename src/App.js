@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Header from "./components/Header";
-import Cart from "./components/Cart";
 import { useState } from "react";
+import Cart from "./components/Cart";
 const App = () => {
   const [animeList, setAnimeList] = useState([]);
   const [favouriteList, setFavouriteList] = useState([]);

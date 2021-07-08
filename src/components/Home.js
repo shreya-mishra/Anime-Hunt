@@ -33,7 +33,8 @@ const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
               {item.title}
             </span>
             {/* <span>{item.synopsis}</span> */}
-            {favouriteList.includes(item) ? (
+
+            {favouriteList.some((i) => i.mal_id === item.mal_id) ? (
               <button
                 className='button'
                 onClick={() =>
@@ -48,9 +49,7 @@ const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
                 className='button'
                 onClick={() => {
                   setFavouriteList([...favouriteList, item]);
-                }}
-                // disabled={item.favouriteList}
-              >
+                }}>
                 Add to Favourites
               </button>
             )}
