@@ -1,11 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 
-const Home = () => {
-  const [animeList, setAnimeList] = useState([]);
-  const [favouriteList, setFavouriteList] = useState([]);
-
+const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
   useEffect(() => {
     fetchAnimeList();
     console.log("typeof ", typeof favouriteList);
@@ -51,7 +48,9 @@ const Home = () => {
                 className='button'
                 onClick={() => {
                   setFavouriteList([...favouriteList, item]);
-                }}>
+                }}
+                // disabled={item.favouriteList}
+              >
                 Add to Favourites
               </button>
             )}
