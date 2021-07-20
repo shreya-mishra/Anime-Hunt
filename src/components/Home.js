@@ -1,12 +1,15 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../App.css";
+import { Favourites } from "./context";
 
-const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
+const Home = () => {
+  const [animeList, setAnimeList] = useState([]);
+  const { favouriteList, setFavouriteList } = useContext(Favourites);
   useEffect(() => {
     fetchAnimeList();
     console.log("typeof ", typeof favouriteList);
-  }, []);
+  });
   console.log(animeList);
   const fetchAnimeList = async () => {
     // const temp = await fetch(
@@ -22,7 +25,6 @@ const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
         setAnimeList(abc);
       });
   };
-  console.log("favouriteList", favouriteList);
   return (
     <div className='anime__container'>
       {animeList.map((item, key) => {
@@ -32,7 +34,6 @@ const Home = ({ favouriteList, setFavouriteList, animeList, setAnimeList }) => {
             <span style={{ fontSize: "22px", fontWeight: "bold" }}>
               {item.title}
             </span>
-            {/* <span>{item.synopsis}</span> */}
 
             {favouriteList.some((i) => i.mal_id === item.mal_id) ? (
               <button

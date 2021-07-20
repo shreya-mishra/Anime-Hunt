@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
+import { Favourites } from "./context";
 
-const Cart = ({ animeList, setAnimeList, favouriteList, setFavouriteList }) => {
-  console.log("fav list in favs", favouriteList[0].image_url);
+const FavouritePage = () => {
+  const { favouriteList } = useContext(Favourites);
   return (
     <div className='anime__container'>
       {favouriteList.map((item) => {
@@ -19,4 +20,4 @@ const Cart = ({ animeList, setAnimeList, favouriteList, setFavouriteList }) => {
   );
 };
 
-export default Cart;
+export default FavouritePage;
